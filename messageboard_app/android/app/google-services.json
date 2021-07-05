@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "328089921204",
+    "project_id": "groupproj01-messageboard",
+    "storage_bucket": "groupproj01-messageboard.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328089921204:android:a0356e6067270b29c519e1",
+        "android_client_info": {
+          "package_name": "com.example.messageboard_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328089921204-gevhpc6nhrnisfdleqq505p224e7ok08.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0uSrtpIYOlKoIpV80r8ytOnvMuOsmRHk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328089921204-gevhpc6nhrnisfdleqq505p224e7ok08.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
