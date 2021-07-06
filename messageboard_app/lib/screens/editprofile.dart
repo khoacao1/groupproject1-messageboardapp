@@ -132,22 +132,7 @@ class _EditProfileState extends State<EditProfile> {
         backgroundColor: Color(0xFF2a9d8f),
         elevation: 0.0,
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            CustomListTile(Icons.backpack, 'Message Boards', () {
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => Wrapper()));
-            }),
-            CustomListTile(Icons.person, 'Profile', () {}),
-            CustomListTile(Icons.logout, 'Log Out', () async {
-              await _auth.signOut();
-              Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => Wrapper()));
-            }),
-          ],
-        ),
-      ),
+      
       body: ListView(children: <Widget>[
         Container(
             child: Column(

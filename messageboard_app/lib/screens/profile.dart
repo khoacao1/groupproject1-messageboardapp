@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:messageboard_app/screens/editprofile.dart';
 import 'package:messageboard_app/screens/home.dart';
+import 'package:messageboard_app/screens/setting.dart';
 import 'package:messageboard_app/screens/wrapper.dart';
 
 class Profile extends StatefulWidget {
@@ -102,11 +103,9 @@ class _ProfileState extends State<Profile> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Profile()));
             }),
-            CustomListTile(Icons.settings, 'Settings', () {}),
-            CustomListTile(Icons.logout, 'Log Out', () async {
-              await _auth.signOut();
+            CustomListTile(Icons.settings, 'Settings', () {
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (context) => Wrapper()));
+                  MaterialPageRoute(builder: (context) => Setting()));
             }),
           ],
         ),
