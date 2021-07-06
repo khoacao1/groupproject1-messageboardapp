@@ -19,7 +19,7 @@ This is a messaging app that allows users to chat amongst themselves. It uses Fi
 
 ### Installing
 
-* Download the messageboard_app folder. Most importantly, make sure to have the pubspec.yaml file, lib folder, android folder, and web folder.
+* Download the messageboard_app folder. Most importantly, make sure to have the pubspec.yaml file, lib folder, android folder, web folder, and iOS folder.
 
 ### Executing program
 
