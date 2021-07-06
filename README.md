@@ -33,10 +33,10 @@ This is a messaging app that allows users to chat amongst themselves. It uses Fi
 * The program should execute
 
 ## IMPORTANT - Demo Videos 
-* Web app demo: 
+* Android app demo: 
 https://youtu.be/uc59fGYzr0k
 
-* Android app demo: 
+* Web app demo: 
 https://youtu.be/8zyhXRcSkBs
 
 
