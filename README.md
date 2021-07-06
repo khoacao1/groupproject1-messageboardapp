@@ -25,7 +25,7 @@ This is a messaging app that allows users to chat amongst themselves. It uses Fi
 
 * After extracting on your device, locate your terminal and go to the path where the file is saved. Make sure you are in the messageboard_app directory.
 * Save the pubspec.yaml file to first download all the dependencies
-* Select your emulator of choice. Either web or android.
+* Select your emulator of choice. Either web, android, or iOS.
 * In the terminal type
    ```
    flutter run
