@@ -1,4 +1,5 @@
 import 'package:messageboard_app/models/user.dart';
+import 'package:messageboard_app/screens/pages/gamechat.dart';
 import 'package:messageboard_app/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -81,17 +82,16 @@ class AuthService {
     }
   }
 
-  // Future post(String post, String dateTime) async {
-  //   try {
-  //     await DataPost().uploadData(post, dateTime);
+  Future post(String username, String post, String dateTime) async {
+    try {
+      await DataPost().uploadData(username, post, dateTime);
 
-  //     return Admin();
-  //     // return _userFromFirebaseUser(user);
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return null;
-  //   }
-  // }
+      return GameChatPage();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
   // Signin with google
   Future signInWithGoogle() async {

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:messageboard_app/screens/pages/gamechat.dart';
 
 class DatabaseService {
   final String uid;
@@ -22,11 +23,12 @@ class DatabaseService {
 class DataPost {
   DataPost({dynamic});
 
-  final CollectionReference articleCollection =
-      FirebaseFirestore.instance.collection('Articles');
+  final CollectionReference gamesCollection =
+      FirebaseFirestore.instance.collection('games');
 
-  Future uploadData(String input, String dateTime) async {
-    return await articleCollection.doc().set({
+  Future uploadData(String username, String input, String dateTime) async {
+    return await gamesCollection.doc().set({
+      'Username': username,
       'Input': input,
       'Date': dateTime,
     });
