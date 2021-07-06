@@ -36,6 +36,8 @@ class Home extends StatelessWidget {
             }),
             CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Wrapper()));
             }),
           ],
         ),

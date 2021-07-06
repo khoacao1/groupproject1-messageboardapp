@@ -106,8 +106,11 @@ class _ProfileState extends State<Profile> {
             CustomListTile(Icons.settings, 'Settings', () {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
-            }),CustomListTile(Icons.logout, 'Log Out', () async {
+            }),
+            CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Wrapper()));
             }),
           ],
         ),
@@ -119,8 +122,7 @@ class _ProfileState extends State<Profile> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Icon(Icons.account_circle,
-                      size: 200.0, color: Colors.white),
+                  Icon(Icons.account_circle, size: 200.0, color: Colors.white),
                   SizedBox(height: 15.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -51,12 +51,15 @@ class _BusinessChatPageState extends State<BusinessChatPage> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Profile()));
             }),
-            CustomListTile(Icons.logout, 'Settings', () {
+            CustomListTile(Icons.settings, 'Settings', () {
               //await _auth.signOut();
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
-            }),CustomListTile(Icons.logout, 'Log Out', () async {
+            }),
+            CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Wrapper()));
             }),
           ],
         ),

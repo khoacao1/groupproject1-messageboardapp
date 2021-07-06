@@ -1,29 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:messageboard_app/screens/authenticate/authentication.dart';
 import 'package:messageboard_app/screens/editprofile.dart';
 import 'package:messageboard_app/screens/home.dart';
 import 'package:messageboard_app/screens/profile.dart';
 import 'package:messageboard_app/screens/wrapper.dart';
 import 'package:messageboard_app/services/auth.dart';
- 
+
 import 'authenticate/sign_in.dart';
 import 'editsettings.dart';
- 
+
 class Setting extends StatefulWidget {
   Setting({Key? key}) : super(key: key);
- 
+
   @override
   _SettingState createState() => _SettingState();
 }
- 
+
 class _SettingState extends State<Setting> {
   final AuthService _auth = AuthService();
   String? email;
   String? password;
   String? social;
 
-   getLastName() {
+  getLastName() {
     final CollectionReference users =
         FirebaseFirestore.instance.collection('Users');
     var uid = FirebaseAuth.instance.currentUser!.uid;
@@ -50,7 +51,7 @@ class _SettingState extends State<Setting> {
       },
     );
   }
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,8 +76,10 @@ class _SettingState extends State<Setting> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
             }),
-            CustomListTile(Icons.settings, 'Log Out', () async {
+            CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Wrapper()));
             }),
           ],
         ),
@@ -88,13 +91,13 @@ class _SettingState extends State<Setting> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  Icon(Icons.account_circle,
-                      size: 200.0, color: Colors.white),
+                  Icon(Icons.account_circle, size: 200.0, color: Colors.white),
                   SizedBox(height: 15.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Change your password', style: TextStyle(fontSize: 17.0)),
+                      Text('Change your password',
+                          style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                   Divider(height: 20.0),
@@ -109,7 +112,8 @@ class _SettingState extends State<Setting> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Update Social Media', style: TextStyle(fontSize: 17.0)),
+                      Text('Update Social Media',
+                          style: TextStyle(fontSize: 17.0)),
                     ],
                   ),
                   getLastName(),
