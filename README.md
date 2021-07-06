@@ -36,6 +36,9 @@ This is a messaging app that allows users to chat amongst themselves. It uses Fi
 * Android app demo: 
 https://youtu.be/uc59fGYzr0k
 
+* iOS app demo: 
+https://youtu.be/L_CoZ4WJR_g
+
 * Web app demo: 
 https://youtu.be/8zyhXRcSkBs
 
