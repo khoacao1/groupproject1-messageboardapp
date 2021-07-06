@@ -18,6 +18,14 @@ class DatabaseService {
       'User Admin Role': false,
     });
   }
+
+  Future updateName(String fname, String lname) async {
+    return await userCollection.doc(uid).set({
+      'Full Name': fname + ' ' + lname,
+      'First Name': fname,
+      'Last Name': lname
+    });
+  }
 }
 
 class DataPost {

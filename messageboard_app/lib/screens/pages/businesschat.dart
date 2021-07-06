@@ -12,6 +12,8 @@ import 'package:messageboard_app/shared/constants.dart';
 import 'package:messageboard_app/widgets/message_tile.dart';
 import 'package:provider/provider.dart';
 
+import '../profile.dart';
+
 class BusinessChatPage extends StatefulWidget {
   @override
   _BusinessChatPageState createState() => _BusinessChatPageState();
@@ -44,7 +46,10 @@ class _BusinessChatPageState extends State<BusinessChatPage> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Wrapper()));
             }),
-            CustomListTile(Icons.person, 'Profile', () {}),
+            CustomListTile(Icons.person, 'Profile', () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Profile()));
+            }),
             CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
               Navigator.of(context).pushReplacement(

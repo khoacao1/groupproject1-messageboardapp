@@ -6,6 +6,7 @@ import 'package:messageboard_app/screens/home.dart';
 import 'package:messageboard_app/screens/pages/chats/businesschat.dart';
 import 'package:messageboard_app/screens/pages/chats/gameschat.dart';
 import 'package:messageboard_app/screens/pages/chats/healthchat.dart';
+import 'package:messageboard_app/screens/profile.dart';
 import 'package:messageboard_app/screens/wrapper.dart';
 import 'package:messageboard_app/services/auth.dart';
 import 'package:messageboard_app/services/database.dart';
@@ -45,7 +46,10 @@ class _HealthChatPageState extends State<HealthChatPage> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Wrapper()));
             }),
-            CustomListTile(Icons.person, 'Profile', () {}),
+            CustomListTile(Icons.person, 'Profile', () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Profile()));
+            }),
             CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
               Navigator.of(context).pushReplacement(

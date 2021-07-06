@@ -1,4 +1,5 @@
 import 'package:messageboard_app/screens/grouplist.dart';
+import 'package:messageboard_app/screens/profile.dart';
 import 'package:messageboard_app/screens/wrapper.dart';
 import 'package:messageboard_app/services/auth.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,10 @@ class Home extends StatelessWidget {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Wrapper()));
             }),
-            CustomListTile(Icons.person, 'Profile', () {}),
+            CustomListTile(Icons.person, 'Profile', () {
+              Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => Profile()));
+            }),
             CustomListTile(Icons.logout, 'Log Out', () async {
               await _auth.signOut();
             }),
