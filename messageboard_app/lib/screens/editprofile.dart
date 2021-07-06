@@ -19,6 +19,7 @@ class _EditProfileState extends State<EditProfile> {
   TextEditingController lnameController = TextEditingController();
   late String fname;
   late String lname;
+  late String date;
 
   getUid() {
     final User? user = _auth.currentUser;
@@ -50,6 +51,18 @@ class _EditProfileState extends State<EditProfile> {
     });
   }
 
+  getDate() async {
+    await FirebaseFirestore.instance
+        .collection('Users')
+        .doc(getUid())
+        .get()
+        .then((DocumentSnapshot documentSnapshot) {
+      if (documentSnapshot.exists) {
+        date = documentSnapshot.get('Register Date');
+      }
+    });
+  }
+
   updateProfileData() {
     var dbs = new DatabaseService(uid: getUid());
     setState(() {
@@ -59,7 +72,7 @@ class _EditProfileState extends State<EditProfile> {
       if (lnameController.text == "") {
         lnameController.text = lname;
       }
-      dbs.updateName(fnameController.text, lnameController.text);
+      dbs.updateUserData(fnameController.text, lnameController.text, date);
       Navigator.pop(context, [fnameController.text, lnameController.text]);
     });
   }
@@ -101,6 +114,7 @@ class _EditProfileState extends State<EditProfile> {
   Widget cancelButton() {
     getFirstName();
     getLastName();
+    getDate();
     return FlatButton(
       child: Text("Cancel"),
       onPressed: () {
