@@ -7,6 +7,7 @@ import 'package:messageboard_app/services/auth.dart';
 import 'package:messageboard_app/services/database.dart';
  
 class EditSettings extends StatefulWidget {
+  
   EditSettings({Key? key}) : super(key: key);
  
   @override
@@ -14,8 +15,10 @@ class EditSettings extends StatefulWidget {
 }
  
 class _EditSettingsState extends State<EditSettings> {
+  late String social;
   String password = '';
   TextEditingController passwordController = TextEditingController();
+  TextEditingController socialController = TextEditingController();
  
   void _changePassword(String password) async {
     User? user = await FirebaseAuth.instance.currentUser;
@@ -49,6 +52,51 @@ class _EditSettingsState extends State<EditSettings> {
       child: Text("Cancel"),
       onPressed: () {
         Navigator.pop(context);
+      },
+    );
+  }
+
+  Column buildSocialField() {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(top: 12.0),
+            child: Text(
+              "Enter your social media handles",
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
+          TextFormField(
+            controller: socialController,
+            onChanged:(value){
+              social = value;
+            },
+          ),
+        ]);
+  }
+
+  
+
+  Future<void> addSocial(social_media) {
+    // Call the user's CollectionReference to add a new user
+    CollectionReference users = FirebaseFirestore.instance.collection('Users');
+    var uid = FirebaseAuth.instance.currentUser!.uid;
+    return users.doc(uid)
+        .update({
+          'social': social_media,
+        })
+        .then((value) => print("Social Added"))
+        .catchError((error) => print("Failed to add social: $error"));
+  }
+
+  Widget socialButton() {
+    return FlatButton(
+      child: Text("Update Social Medias"),
+      onPressed: () {
+        print(socialController);
+        //Navigator.pop(context,[social]);
+        addSocial(social);
       },
     );
   }
@@ -91,6 +139,8 @@ class _EditSettingsState extends State<EditSettings> {
                 },
                 child: Text("Update password")),
             cancelButton(),
+            buildSocialField(),
+            socialButton(),
           ],
         ))
       ]),

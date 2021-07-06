@@ -106,6 +106,8 @@ class _ProfileState extends State<Profile> {
             CustomListTile(Icons.settings, 'Settings', () {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
+            }),CustomListTile(Icons.logout, 'Log Out', () async {
+              await _auth.signOut();
             }),
           ],
         ),

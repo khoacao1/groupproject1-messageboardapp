@@ -105,5 +105,29 @@
       loadMainDartJs();
     }
   </script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC_LZLsDjfxyqazvkX84G_kL8nT_MnvRh0",
+    authDomain: "groupproj01-messageboard.firebaseapp.com",
+    databaseURL: "https://groupproj01-messageboard-default-rtdb.firebaseio.com",
+    projectId: "groupproj01-messageboard",
+    storageBucket: "groupproj01-messageboard.appspot.com",
+    messagingSenderId: "328089921204",
+    appId: "1:328089921204:web:6db6aafbd7a25870c519e1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

@@ -53,6 +53,8 @@ class _GameChatPageState extends State<GameChatPage> {
               //await _auth.signOut();
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
+            }),CustomListTile(Icons.logout, 'Log Out', () async {
+              await _auth.signOut();
             }),
           ],
         ),

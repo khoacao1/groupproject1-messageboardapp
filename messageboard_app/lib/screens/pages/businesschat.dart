@@ -55,6 +55,8 @@ class _BusinessChatPageState extends State<BusinessChatPage> {
               //await _auth.signOut();
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
+            }),CustomListTile(Icons.logout, 'Log Out', () async {
+              await _auth.signOut();
             }),
           ],
         ),

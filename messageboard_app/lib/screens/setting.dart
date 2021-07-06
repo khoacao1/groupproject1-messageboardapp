@@ -21,6 +21,35 @@ class _SettingState extends State<Setting> {
   final AuthService _auth = AuthService();
   String? email;
   String? password;
+  String? social;
+
+   getLastName() {
+    final CollectionReference users =
+        FirebaseFirestore.instance.collection('Users');
+    var uid = FirebaseAuth.instance.currentUser!.uid;
+    return FutureBuilder<DocumentSnapshot>(
+      future: users.doc(uid).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text("Something went wrong");
+        }
+
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
+        }
+
+        if (snapshot.connectionState == ConnectionState.done) {
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
+          // return Text("${data['Full Name']}", style: TextStyle(fontSize: 17.0));
+          return Text("${data['social']}", style: TextStyle(fontSize: 17.0));
+        }
+
+        return Text("loading");
+      },
+    );
+  }
  
   @override
   Widget build(BuildContext context) {
@@ -77,20 +106,24 @@ class _SettingState extends State<Setting> {
                     ],
                   ),
                   Divider(height: 20.0),
-                  MaterialButton(
-                    onPressed: () async {
-                      await _auth.signOut();
-                    },
-                    child: Text('Log Out', style: TextStyle(fontSize: 17.0)),
-                  )
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Update Social Media', style: TextStyle(fontSize: 17.0)),
+                    ],
+                  ),
+                  getLastName(),
                 ],
               ),
             )
           ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Navigator.of(context)
+          final List<String> pageResults = await Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => EditSettings()));
+          setState(() {
+            social = pageResults[0];
+          });
         },
         child: Icon(Icons.edit, color: Colors.white, size: 30.0),
         backgroundColor: Colors.grey[700],

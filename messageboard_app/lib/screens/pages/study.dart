@@ -58,6 +58,9 @@ class _StudyChatPageState extends State<StudyChatPage> {
               Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => Setting()));
             }),
+            CustomListTile(Icons.logout, 'Log Out', () async {
+              await _auth.signOut();
+            }),
           ],
         ),
       ),
