@@ -5,6 +5,7 @@ Our Group:
   - Saadh Ahmed
   - James Nguyen
   - Anish Ganga
+  - Saad Mahmood
 
 ## Description
 
