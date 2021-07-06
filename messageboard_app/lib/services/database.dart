@@ -26,8 +26,43 @@ class DataPost {
   final CollectionReference gamesCollection =
       FirebaseFirestore.instance.collection('games');
 
-  Future uploadData(String username, String input, String dateTime) async {
+  Future uploadDataGames(String username, String input, String dateTime) async {
     return await gamesCollection.doc().set({
+      'Username': username,
+      'Input': input,
+      'Date': dateTime,
+    });
+  }
+
+  final CollectionReference businessCollection =
+      FirebaseFirestore.instance.collection('business');
+
+  Future uploadDataBusiness(
+      String username, String input, String dateTime) async {
+    return await businessCollection.doc().set({
+      'Username': username,
+      'Input': input,
+      'Date': dateTime,
+    });
+  }
+
+  final CollectionReference healthCollection =
+      FirebaseFirestore.instance.collection('health');
+
+  Future uploadDataHealth(
+      String username, String input, String dateTime) async {
+    return await healthCollection.doc().set({
+      'Username': username,
+      'Input': input,
+      'Date': dateTime,
+    });
+  }
+
+  final CollectionReference studyCollection =
+      FirebaseFirestore.instance.collection('study');
+
+  Future uploadDataStudy(String username, String input, String dateTime) async {
+    return await studyCollection.doc().set({
       'Username': username,
       'Input': input,
       'Date': dateTime,

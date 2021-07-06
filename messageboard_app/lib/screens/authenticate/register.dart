@@ -38,7 +38,7 @@ class _RegisterState extends State<Register> {
             appBar: AppBar(
               backgroundColor: Color(0xFF2a9d8f),
               elevation: 0.0,
-              title: Text('Sign Up to Khoa\'s Page'),
+              title: Text('Sign Up to Group Chat'),
               actions: <Widget>[
                 FlatButton.icon(
                   textColor: Color(0xFFFFFFFF),

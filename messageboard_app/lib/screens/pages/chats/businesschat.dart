@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ArticleList extends StatefulWidget {
+class BusinessList extends StatefulWidget {
   // const UserList({Key? key}) : super(key: key);
 
   @override
-  _ArticleListState createState() => _ArticleListState();
+  _BusinessListState createState() => _BusinessListState();
 }
 
-class _ArticleListState extends State<ArticleList> {
+class _BusinessListState extends State<BusinessList> {
   // int count = 0;
   // String press = '';
 
@@ -17,7 +17,7 @@ class _ArticleListState extends State<ArticleList> {
     return Scaffold(
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
-            .collection('games')
+            .collection('business')
             .orderBy('Date')
             .snapshots(),
         builder: (context, snapshot) {

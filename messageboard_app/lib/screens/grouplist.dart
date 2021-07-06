@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:messageboard_app/screens/pages/businesschat.dart';
 import 'package:messageboard_app/screens/pages/gamechat.dart';
+import 'package:messageboard_app/screens/pages/health.dart';
+import 'package:messageboard_app/screens/pages/study.dart';
 
 class GroupList extends StatelessWidget {
   const GroupList({Key? key}) : super(key: key);
@@ -56,7 +59,10 @@ class GroupList extends StatelessWidget {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
               dense: true,
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => BusinessChatPage()));
+              },
               leading: Image.asset(
                 'assets/groupicons/business.jpg',
               ),
@@ -87,7 +93,10 @@ class GroupList extends StatelessWidget {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
               dense: true,
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HealthChatPage()));
+              },
               leading: Image.asset(
                 'assets/groupicons/healthcare.jpg',
               ),
@@ -118,7 +127,10 @@ class GroupList extends StatelessWidget {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 20.0, horizontal: 35.0),
               dense: true,
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => StudyChatPage()));
+              },
               leading: Image.asset(
                 'assets/groupicons/study.jpg',
               ),

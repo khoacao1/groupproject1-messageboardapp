@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:messageboard_app/models/user.dart';
 import 'package:messageboard_app/screens/home.dart';
+import 'package:messageboard_app/screens/pages/chats/businesschat.dart';
 import 'package:messageboard_app/screens/pages/chats/gameschat.dart';
+import 'package:messageboard_app/screens/pages/chats/healthchat.dart';
 import 'package:messageboard_app/screens/wrapper.dart';
 import 'package:messageboard_app/services/auth.dart';
 import 'package:messageboard_app/services/database.dart';
@@ -11,12 +13,12 @@ import 'package:messageboard_app/shared/constants.dart';
 import 'package:messageboard_app/widgets/message_tile.dart';
 import 'package:provider/provider.dart';
 
-class GameChatPage extends StatefulWidget {
+class HealthChatPage extends StatefulWidget {
   @override
-  _GameChatPageState createState() => _GameChatPageState();
+  _HealthChatPageState createState() => _HealthChatPageState();
 }
 
-class _GameChatPageState extends State<GameChatPage> {
+class _HealthChatPageState extends State<HealthChatPage> {
   final AuthService _auth = AuthService();
 
   String input = '';
@@ -32,7 +34,7 @@ class _GameChatPageState extends State<GameChatPage> {
     return Scaffold(
       backgroundColor: Color(0xFFb5e1eb),
       appBar: AppBar(
-        title: Text('Games Group'),
+        title: Text('Health Group'),
         backgroundColor: Color(0xFF2a9d8f),
         elevation: 0.0,
       ),
@@ -55,7 +57,7 @@ class _GameChatPageState extends State<GameChatPage> {
       body: Container(
           child: Stack(children: <Widget>[
         // getUserName(user.uid),
-        GameList(),
+        HealthList(),
         Container(
           alignment: Alignment.bottomCenter,
           child: Row(
@@ -71,7 +73,7 @@ class _GameChatPageState extends State<GameChatPage> {
               SizedBox(width: 12.0),
               GestureDetector(
                 onTap: () async {
-                  await _auth.postGames(
+                  await _auth.postHealth(
                       username, input, DateTime.now().toString());
                 },
                 child: Container(
@@ -150,43 +152,3 @@ void _errorPost(context) {
     },
   );
 }
-
-// getUserName(documentId) {
-
-//   CollectionReference users = FirebaseFirestore.instance.collection('Users');
-//   users.doc(documentId).get().then((DocumentSnapshot documentSnapshot) {
-//     return documentSnapshot.get('Username');
-//   });
-// }
-// class GetUserName extends StatelessWidget {
-//   final String documentId;
-
-//   GetUserName(this.documentId);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     CollectionReference users = FirebaseFirestore.instance.collection('Users');
-
-//     return FutureBuilder<DocumentSnapshot>(
-//       future: users.doc(documentId).get(),
-//       builder:
-//           (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-//         if (snapshot.hasError) {
-//           return Text("Something went wrong");
-//         }
-
-//         if (snapshot.hasData && !snapshot.data!.exists) {
-//           return Text("Document does not exist");
-//         }
-
-//         if (snapshot.connectionState == ConnectionState.done) {
-//           Map<String, dynamic> data =
-//               snapshot.data!.data() as Map<String, dynamic>;
-//           return Text("${data['Full Name']}");
-//         }
-
-//         return Text("loading");
-//       },
-//     );
-//   }
-// }

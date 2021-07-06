@@ -1,5 +1,8 @@
 import 'package:messageboard_app/models/user.dart';
+import 'package:messageboard_app/screens/pages/businesschat.dart';
 import 'package:messageboard_app/screens/pages/gamechat.dart';
+import 'package:messageboard_app/screens/pages/health.dart';
+import 'package:messageboard_app/screens/pages/study.dart';
 import 'package:messageboard_app/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -82,11 +85,40 @@ class AuthService {
     }
   }
 
-  Future post(String username, String post, String dateTime) async {
+  Future postGames(String username, String post, String dateTime) async {
     try {
-      await DataPost().uploadData(username, post, dateTime);
-
+      await DataPost().uploadDataGames(username, post, dateTime);
       return GameChatPage();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future postBusiness(String username, String post, String dateTime) async {
+    try {
+      await DataPost().uploadDataBusiness(username, post, dateTime);
+      return BusinessChatPage();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future postHealth(String username, String post, String dateTime) async {
+    try {
+      await DataPost().uploadDataHealth(username, post, dateTime);
+      return HealthChatPage();
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future postStudy(String username, String post, String dateTime) async {
+    try {
+      await DataPost().uploadDataStudy(username, post, dateTime);
+      return StudyChatPage();
     } catch (e) {
       print(e.toString());
       return null;

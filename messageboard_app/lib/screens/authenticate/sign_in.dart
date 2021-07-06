@@ -35,7 +35,7 @@ class _SignInState extends State<SignIn> {
             appBar: AppBar(
               backgroundColor: Color(0xFF2a9d8f),
               elevation: 0.0,
-              title: Text('Sign In to Khoa\'s Page'),
+              title: Text('Sign In to Group Chat'),
               actions: <Widget>[
                 FlatButton.icon(
                   textColor: Color(0xFFFFFFFF),
